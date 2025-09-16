@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 
 public interface TodoRepository extends JpaRepository<Todo, Long>, TodoRepositoryQuery {
 
-    @EntityGraph(attributePaths = "user")
+    @EntityGraph(attributePaths = "user") //페이징으로 인해 EntityGraph로 N+1 해결 방식 변경
     @Query(""" 
             SELECT t
             FROM Todo t
