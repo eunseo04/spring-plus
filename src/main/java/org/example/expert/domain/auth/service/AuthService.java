@@ -42,7 +42,7 @@ public class AuthService {
                 signupRequest.getNickname()
         );
         System.out.println(userRole);
-        User savedUser = userRepository.save(newUser); //문제!!!
+        User savedUser = userRepository.save(newUser); //문제!!! -> 해결: enum 타입 변경으로 인한 db 설정 충돌
         String bearerToken = jwtUtil.createToken(savedUser.getId(), savedUser.getEmail(), userRole, savedUser.getNickname());
 
         return new SignupResponse(bearerToken);
